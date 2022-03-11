@@ -132,10 +132,7 @@ chatForm.addEventListener("submit", (e) => {
 const outputMessage = (message) => {
   const div = document.createElement("div");
   div.classList.add("message");
-  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p>
-  <p class="text">
-      ${message.text}
-  </p>`;
+  div.innerHTML = `<p class="meta">${message.username} <span>${message.time}</span></p><p class="text">${message.text}</p>`;
   document.querySelector(".chat-messages").appendChild(div);
 };
 
@@ -147,7 +144,5 @@ const outputRoomName = (room) => {
 
 // add user to DOM
 const outputUsers = (users) => {
-  userList.innerHTML = `
-  ${users.map((user) => `<li>${user.username}</li>`).join("")}
-  `;
+  userList.innerHTML = `${users.map((user) => `<li>${user.username}</li>`).join("")}`;
 };

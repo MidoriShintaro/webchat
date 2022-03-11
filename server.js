@@ -4,7 +4,7 @@ const http = require("http");
 const socketio = require("socket.io");
 const formatMessage = require("./utils/messages");
 // const moment = require("moment");
-// console.log(moment().localeData());
+// console.log(moment().hour());
 
 const {
   userJoin,

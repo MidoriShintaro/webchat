@@ -29,21 +29,17 @@ io.on("connection", (socket) => {
     //broadcast when a user connects
     socket.broadcast
       .to(user.room)
-      .emit(
-        "message",
-        formatMessage(botName, `${user.username} đã vào phòng`)
-      );
+      .emit("message", formatMessage(botName, `${user.username} đã vào phòng`));
     //send users and room info
     io.to(user.room).emit("roomUsers", {
       room: user.room,
       users: getRoomUsers(user.room),
     });
-  });
-
-  //listen for chatmessage
-  socket.on("chatMessage", (msg) => {
-    const user = getCurrentUser(socket.id);
-    io.to(user.room).emit("message", formatMessage(user.username, msg));
+    //listen for chatmessage
+    socket.on("chatMessage", (msg) => {
+      const user = getCurrentUser(socket.id);
+      io.to(user.room).emit("message", formatMessage(user.username, msg));
+    });
   });
 
   // runs when client disconnects
